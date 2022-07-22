@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# use while and if statement to alter a loop
+
+n=0
+while [ $n -ne 10 ]
+do
+	if [ $n -eq 8 ]
+	then
+		echo "Hi"
+	else
+		echo "Best School"
+	fi
+	n=$(( n + 1 ))
+done

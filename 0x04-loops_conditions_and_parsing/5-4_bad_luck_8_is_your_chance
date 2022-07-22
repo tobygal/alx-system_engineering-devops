@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# display other strings while looping
+
+n=0
+while [ $n -ne 10 ]
+do
+	if [ $n -eq 3 ]
+	then
+		echo "bad luck"
+	elif [ $n -eq 7 ]
+	then
+		echo "good luck"
+	else
+		echo "Best School"
+	fi
+	n=$(( n + 1 ))
+done
