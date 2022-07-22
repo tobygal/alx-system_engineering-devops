@@ -2,9 +2,9 @@
 # use while and if statement to alter a loop
 
 n=0
-while [ $n -ne 10 ]
+while [ $n -ne 11 ]
 do
-	if [ $n -eq 8 ]
+	if [ $n -eq 9 ]
 	then
 		echo "Hi"
 	else
