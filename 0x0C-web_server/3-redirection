@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#redirect using 301
+sudo apt-get update
+sudo apt-get -y install nginx
+echo "Hello World!" | sudo tee -a /var/www/html/index.html
+sudo sed -i '36a rewrite ^/redirect_me http://tochiazolike.blogspot.com permanent;' /etc/nginx/sites-available/default
+sudo service nginx restart
