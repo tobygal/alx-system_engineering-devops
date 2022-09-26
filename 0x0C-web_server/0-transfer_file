@@ -10,5 +10,5 @@ elif [ "$#" -eq 3 ]
 then
     scp -o StrictHostKeyChecking=no $FILE_PATH "$USER@$IP:~/"
 else
-    scp -o StrictHostKeyChecking=no -i $SSH_KEY_PATH $FILE_PATH "$USER@IP:~/"
+    scp -o StrictHostKeyChecking=no -i $SSH_KEY_PATH $FILE_PATH "$USER@$IP:~/"
 fi
