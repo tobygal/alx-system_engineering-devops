@@ -1,17 +1,29 @@
-# install and configure nginx
-
+# update software packages list
 exec { 'update packages':
-  command   => 'apt-get update',
-  path      => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+  command => 'apt-get update',
+  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
 }
 
-#install nginx
+# install nginx
 package { 'nginx':
-  ensure    => 'installed',
+  ensure     => 'installed',
 }
 
-file { 'var/www/html/index.html':
-  content => 'Hello World!',
+# allow HTTP
+exec { 'allow HTTP':
+  command => "ufw allow 'Nginx HTTP'",
+  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+}
+
+# change folder rights
+exec { 'chmod www folder':
+  command => 'chmod -R 755 /var/www',
+  path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+}
+
+# create index file
+file { '/var/www/html/index.html':
+  content => "Hello World!\n",
 }
 
 # create index file
@@ -47,6 +59,11 @@ file { 'Nginx default config file':
         }
 }
 ",
+}
+# restart nginx
+exec { 'restart service':
+  command => 'service nginx restart',
+  path    => '/usr/bin:/usr/sbin:/bin',
 }
 
 # start service nginx
