@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#install nginx and display Hello world
+apt update
+apt install -y nginx
+sed -i '11i\add_header X-Served-By $HOSTNAME;' /etc/nginx/nginx.conf
+service nginx restart
