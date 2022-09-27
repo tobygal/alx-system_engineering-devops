@@ -1,5 +1,11 @@
 # install and configure nginx
 
+exec { 'update packages':
+  command   => 'apt-get update',
+  path      => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
+}
+
+#install nginx
 package { 'nginx':
   ensure    => 'installed',
 }
