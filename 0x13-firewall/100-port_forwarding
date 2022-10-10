@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 #redirect port 8080 to port 80
 
-sudo iptables -t nat -A OUTPUT -o lo -p tcp --dport 8080 -j REDIRECT --to-port 80
+#sudo iptables -t nat -A OUTPUT -o lo -p tcp --dport 8080 -j REDIRECT --to-port 80
+ sed -i "/filter/i\*nat\\n:PREROUTING ACCEPT [0:0]\n-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80\nCOMMIT" /etc/ufw/before.rules
 sudo ufw reload
