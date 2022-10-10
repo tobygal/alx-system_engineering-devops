@@ -2,3 +2,4 @@
 #redirect port 8080 to port 80
 
 sudo iptables -t nat -A OUTPUT -o lo -p tcp --dport 8080 -j REDIRECT --to-port 80
+sudo ufw reload
